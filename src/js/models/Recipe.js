@@ -72,7 +72,7 @@ export default class Recipe {
         // There is a unit
         // i.e 4 1/2 cups, arrCount is [4, 1/2]
         // i.e 4 cups, arrCount is [4]
-        const arrCount = arrIng.slice(0, unitIndex); // from the beginning to the point where unit starts
+        const arrCount = arrIng.slice(0, unitIndex);
 
         let count;
         if (arrCount.length === 1) {
@@ -92,7 +92,6 @@ export default class Recipe {
           count: parseInt(arrIng[0], 10),
           unit: "",
           ingredient: arrIng.slice(1).join(" "),
-          // ^ 'slice(1)' starting at position number 1
         };
       } else if (unitIndex === -1) {
         // There is NO unit and no number in 1st position
@@ -103,7 +102,7 @@ export default class Recipe {
         };
       }
 
-      return ingredient;
+      return objIng;
     });
     this.ingredients = newIngredients;
   }
