@@ -12,6 +12,17 @@ export const clearResults = () => {
   elements.searchResPages.innerHTML = "";
 };
 
+export const highlightSelected = (id) => {
+  const resultsArr = Array.from(document.querySelectorAll(".results__link"));
+  const ifID = document.querySelector(`.results__link[href="#${id}"]`);
+  resultsArr.forEach((el) => {
+    el.classList.remove("results__link--active");
+  });
+  if (ifID) {
+    ifID.classList.add("results__link--active");
+  }
+};
+
 export const limitRecipeTitle = (title, limit = 17) => {
   const newTitle = [];
   if (title.length > limit) {
@@ -28,21 +39,21 @@ export const limitRecipeTitle = (title, limit = 17) => {
 };
 
 const renderRecipe = (recipe) => {
-  const markup = `    
-        <li>
-            <a class="likes__link" href="#${recipe.recipe_id}">
-                <figure class="likes__fig">
-                    <img src="${recipe.image_url}" alt="${recipe.title}">
-                </figure>
-                <div class="likes__data">
-                    <h4 class="likes__name">${limitRecipeTitle(
-                      recipe.title
-                    )}</h4>
-                    <p class="likes__author">${recipe.publisher}</p>
-                </div>
-            </a>
-        </li>
-    `;
+  const markup = `
+      <li>
+          <a class="results__link" href="#${recipe.recipe_id}">
+              <figure class="results__fig">
+                  <img src="${recipe.image_url}" alt="${recipe.title}">
+              </figure>
+              <div class="results__data">
+                  <h4 class="results__name">${limitRecipeTitle(
+                    recipe.title
+                  )}</h4>
+                  <p class="results__author">${recipe.publisher}</p>
+              </div>
+          </a>
+      </li>
+  `;
   elements.searchResList.insertAdjacentHTML("beforeend", markup);
 };
 
