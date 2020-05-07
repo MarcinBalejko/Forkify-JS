@@ -93,7 +93,7 @@ const controlRecipe = async () => {
 
       // Render recipe
       clearLoader();
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (err) {
       alert("Error processing recipe!");
     }
@@ -141,6 +141,10 @@ elements.shopping.addEventListener("click", (e) => {
 /**
  * LIKE CONTROLLER
  */
+
+state.likes = new Likes();
+//JUST FOR NOW ^^^
+
 const controlLike = () => {
   if (!state.likes) state.likes = new Likes();
   // User has not yet liked current recipe
