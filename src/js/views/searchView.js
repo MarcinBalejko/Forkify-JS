@@ -1,7 +1,6 @@
 import { elements } from "./base";
 
 export const getInput = () => elements.searchInput.value;
-// no need for 'return' cause only one line  ^^
 
 export const clearInput = () => {
   elements.searchInput.value = "";
