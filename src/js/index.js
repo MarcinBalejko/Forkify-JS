@@ -5,6 +5,7 @@ import Likes from "./models/Likes";
 import * as searchView from "./views/searchView";
 import * as recipeView from "./views/recipeView";
 import * as listView from "./views/listView";
+import * as likesView from "./views/likesView";
 import { elements, renderLoader, clearLoader } from "./views/base";
 
 /** Global state of the app
@@ -142,7 +143,6 @@ elements.shopping.addEventListener("click", (e) => {
  */
 const controlLike = () => {
   if (!state.likes) state.likes = new Likes();
-
   // User has not yet liked current recipe
   const currentID = state.recipe.id;
   if (!state.likes.isLiked(currentID)) {
@@ -154,13 +154,19 @@ const controlLike = () => {
       state.recipe.img
     );
     // Toggle the like button
+    likesView.toggleLikeBtn(true);
+
     // Add like to UI list
     console.log(state.likes);
+
     // User HAS liked current recipe
   } else {
     // Remove like from the state
     state.likes.deleteLike(currentID);
+
     // Toggle the like button
+    likesView.toggleLikeBtn(false);
+
     // Add like from UI list
   }
 };
