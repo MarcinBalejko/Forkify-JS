@@ -147,8 +147,9 @@ state.likes = new Likes();
 
 const controlLike = () => {
   if (!state.likes) state.likes = new Likes();
-  // User has not yet liked current recipe
   const currentID = state.recipe.id;
+
+  // User has not yet liked current recipe
   if (!state.likes.isLiked(currentID)) {
     // Add like to the state
     const newLike = state.likes.addLike(
@@ -161,7 +162,7 @@ const controlLike = () => {
     likesView.toggleLikeBtn(true);
 
     // Add like to UI list
-    console.log(state.likes);
+    likesView.renderLike(newLike);
 
     // User HAS liked current recipe
   } else {
@@ -172,7 +173,7 @@ const controlLike = () => {
     likesView.toggleLikeBtn(false);
 
     // Remove like from UI list
-    console.log(state.likes);
+    likesView.deleteLike(currentID);
   }
   likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
