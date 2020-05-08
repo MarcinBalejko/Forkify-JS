@@ -171,8 +171,10 @@ const controlLike = () => {
     // Toggle the like button
     likesView.toggleLikeBtn(false);
 
-    // Add like from UI list
+    // Remove like from UI list
+    console.log(state.likes);
   }
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
 
 // Handling recipe button clicks
