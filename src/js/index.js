@@ -16,9 +16,6 @@ import { elements, renderLoader, clearLoader } from "./views/base";
  */
 const state = {};
 
-window.state = state;
-// TESTING ^^^
-
 // SEARCH CONTROLLER
 
 const controlSearch = async () => {
@@ -68,8 +65,7 @@ elements.searchResPages.addEventListener("click", (e) => {
 const controlRecipe = async () => {
   // 'window.location' is an entire url
   // Get ID from url
-  const id = window.location.hash.replace("#", ""); // so that instead of a hash, we end up with the id that we need
-  console.log(id);
+  const id = window.location.hash.replace("#", "");
 
   if (id) {
     // Prepare UI for changes
@@ -210,5 +206,3 @@ elements.recipe.addEventListener("click", (e) => {
     controlLike();
   }
 });
-
-window.l = new List();
