@@ -66,7 +66,7 @@ export default class Recipe {
       ingredient = ingredient.replace(/ *\([^)]*\) */g, " ");
       // 3) Parse ingredients into count, unit and ingredient
       const arrIng = ingredient.split(" ");
-      const unitIndex = arrIng.findIndex((el2) => units.includes(el2)); // it will perform this test for every el in array
+      const unitIndex = arrIng.findIndex((el2) => units.includes(el2));
 
       let objIng;
       if (unitIndex > -1) {
@@ -88,7 +88,7 @@ export default class Recipe {
           ingredient: arrIng.slice(unitIndex + 1).join(" "), // + 1 cause it starts right after the unit
         };
       } else if (parseInt(arrIng[0], 10)) {
-        // There is no unit, but 1st element is a number (i.e '1 bread')
+        // There is no unit, but 1st element is a number
         objIng = {
           count: parseInt(arrIng[0], 10),
           unit: "",
@@ -99,7 +99,7 @@ export default class Recipe {
         objIng = {
           count: 1,
           unit: "",
-          ingredient, // same as 'ingredient: ingredient,'
+          ingredient,
         };
       }
 
